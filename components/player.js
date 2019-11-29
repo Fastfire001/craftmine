@@ -9,7 +9,8 @@ class Player {
     pushPosition() {
         this.playerPosition.push(this.element.getAttribute('position'));
     }
-    removePostion(){
+
+    removePostion() {
         this.playerPosition.shift()
     }
 }
