@@ -1,13 +1,16 @@
 <html>
-  <head>
+<head>
     <script src="https://aframe.io/releases/0.9.2/aframe.min.js"></script>
     <script>
         // your code here
     </script>
-  </head>
-  <body>
-    <a-scene>
-        <a-box position="-1 4 -3" rotation="0 45 0" color="#4CC3D9"></a-box>
-    </a-scene>
-  </body>
+</head>
+<body>
+<a-scene embedded arjs=’sourceType: webcam;’>
+    <a-assets>
+        <a-asset-item id="creepers" src="./components/creepers/scene.gltf" animation-mixer></a-asset-item>
+    </a-assets>
+    <a-entity position="20 -50 -200" gltf-model="#creepers"></a-entity>
+</a-scene>
+</body>
 </html>
