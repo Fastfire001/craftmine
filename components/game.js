@@ -12,11 +12,10 @@ class Game {
     }
 
     startGame() {
-        var intervalID = window.setInterval(this.moveCreeper, 2000);
+        var intervalID = window.setInterval(this.moveCreeper, 500);
     }
 
     moveCreeper() {
-        this.creeper.move(this.player.playerPosition).then(()=>{
-        })
+        this.creeper.move(this.player.playerPositionT)
     }
 }

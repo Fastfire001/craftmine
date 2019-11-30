@@ -24,7 +24,8 @@
                 <a-light type="point" intensity="1.5" decay="1" distance="7" color="#FFC"></a-light>
             </a-camera>
         </a-plane>
-        <a-entity id="creeper" position="40 0 70" scale="1.2 1.2 1.2" gltf-model="#creepers"></a-entity>
+        <a-entity dur="300"             easing="linear"
+                  kinematic-body id="creeper" position="0 0 0" scale="1.2 1.2 1.2" gltf-model="#creepers"></a-entity>
         <a-plane position="0 -0.5 0" rotation="-90 0 0" width="5" height="5"
                  material="src: #stone; repeat: 5 5"></a-plane>
         <a-plane position="2 0 0 " rotation="0 -90 0" width="5" height="5"
