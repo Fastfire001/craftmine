@@ -1,4 +1,6 @@
 <html>
+    <img id="dead" src="assets/images/dead.png" style=" display:none;z-index: 10000" ; width="100%" ; height="100%">
+
     <head>
         <script src="https://aframe.io/releases/0.9.2/aframe.min.js"></script>
         <script src="components/creeper.js"></script>
@@ -10,8 +12,9 @@
         <script src="https://github.com/ngokevin/aframe-physics-components/blob/master/dist/aframe-physics-components.min.js"></script>
         <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.0.1/dist/aframe-extras.min.js"></script>
     </head>
+
     <body>
-        <a-scene light="defaultLightsEnabled: false" physics="debug: true">
+        <a-scene style="z-index: 0" light="defaultLightsEnabled: false" physics="debug: true; gravity: -100">
             <a-assets>
                 <a-asset-item id="creepers" src="./assets/images/creepers/scene.gltf" animation-mixer></a-asset-item>
                 <img id="stone" src="./assets/images/stone.png">
@@ -22,21 +25,27 @@
                 <img id="cobblestone" src="./assets/images/cobblestone.jpg">
             </a-assets>
 
-            <a-entity id="cameraWrapper" geometry="box" dynamic-body="mass:100" position="0 1 0" width="2" height="1"
+            <!--Camera -->
+            
+            <a-entity id="cameraWrapper" geometry="box" dynamic-body="mass:100" position="0 1 0" width="2" height="2"
                       depth="2"
                       listener>
-                    <a-camera  jump-ability universal-controls kinematic-body="radius:0.7"
-                               id="player"
-                              physics-body="boundingBox: 0.1 0.1 0.1; mass: 1; velocity: 0.2 0 0"
-                              position="0 1 0"
-                              wasd-controls="acceleration: 600">
-                        <a-light type="point" intensity="1.5" decay="1" distance="7" color="#FFC"></a-light>
-                    </a-camera>
+                <a-camera jump-ability universal-controls kinematic-body="radius:0.7"
+                          id="player"
+                          physics-body="boundingBox: 0.1 0.1 0.1; mass: 1; velocity: 0.2 0 0"
+                          position="0 1 0"
+                          wasd-controls="acceleration: 600">
+                    <a-entity id="overlay" radius="2" material="opacity:0.4; color: black; side: back"></a-entity>
+                    <a-light type="point" intensity="1.5" decay="1" distance="7" color="#FFC"></a-light>
+                </a-camera>
             </a-entity>
 
-<!--            <a-entity animation-mixer="clip: ArmatureAction.001" dur="300" easing="linear"-->
-<!--                      kinematic-body id="creeper" position="0 0 0" scale="1.2 1.2 1.2"-->
-<!--                      gltf-model="#creepers"></a-entity>-->
+            <!--Creeper entity -->
+
+            <a-entity animation="to: 0 0 50; property: position;  dur: 2000; easing: linear" rotation="0 270 0"
+                      animation-mixer="clip: ArmatureAction.001" dur="300" easing="linear"
+                      kinematic-body id="creeper" position="0 0 0" scale="1.2 1.2 1.2"
+                      gltf-model="#creepers"></a-entity>
 
             <!-- starting wall -->
             <a-box static-body material="src: #stone" width="6" height="6" depth="6" repeat="5 5"
