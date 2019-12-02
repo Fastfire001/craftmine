@@ -11,7 +11,8 @@
         <script src="https://unpkg.com/aframe-fps-counter-component/dist/aframe-fps-counter-component.min.js"></script>
     </head>
     <body>
-        <a-scene id="scene" style="z-index: 0" light="defaultLightsEnabled: false" physics="debug: true; gravity: -100">
+        <a-scene click-handler id="scene" style="z-index: 0" light="defaultLightsEnabled: false"
+                 physics="debug: true; gravity: -100">
             <a-entity hand-controls>
                 <a-entity fps-counter></a-entity>
             </a-entity>
@@ -27,19 +28,19 @@
             </a-assets>
 
             <!--Camera -->
-                <a-entity id="cameraWrapper" geometry="box" dynamic-body="mass:100" position="0 1 0" width="2"
-                          height="2"
-                          depth="2"
-                          listener>
-                    <a-camera jump-ability universal-controls kinematic-body="radius:0.7"
-                              id="player"
-                              physics-body="boundingBox: 0.1 0.1 0.1; mass: 1; velocity: 0.2 0 0"
-                              position="0 1 0"
-                              wasd-controls="acceleration: 600">
-                        <a-entity id="overlay" radius="2" material="opacity:0.4; color: black; side: back"></a-entity>
-                        <a-light type="point" intensity="1.5" decay="1" distance="7" color="#FFC"></a-light>
-                    </a-camera>
-                </a-entity>
+            <a-entity id="cameraWrapper" geometry="box" dynamic-body="mass:100" position="0 1 0" width="2"
+                      height="2"
+                      depth="2"
+                      listener>
+                <a-camera jump-ability universal-controls kinematic-body="radius:0.7"
+                          id="player"
+                          physics-body="boundingBox: 0.1 0.1 0.1; mass: 1; velocity: 0.2 0 0"
+                          position="0 1 0"
+                          wasd-controls="acceleration: 600">
+                    <a-entity id="overlay" radius="2" material="opacity:0.4; color: black; side: back"></a-entity>
+                    <a-light type="point" intensity="1.5" decay="1" distance="7" color="#FFC"></a-light>
+                </a-camera>
+            </a-entity>
 
             <!--Creeper entity -->
 
@@ -107,4 +108,16 @@
             <a-light type="point" intensity="1" decay="1" distance="15" color="#FFC" position="-4 -1 -14"></a-light>
         </a-scene>
     </body>
+    <script>
+        AFRAME.registerComponent("click-handler", {
+            init: function () {
+                const sceneEl = this.el.sceneEl
+                const canvasEl = sceneEl.canvas
+                canvasEl.addEventListener('touchstart', () => {
+                    console.log("yo")
+                    // code here
+                })
+            }
+        });
+    </script>
 </html>
