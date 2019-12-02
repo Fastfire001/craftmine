@@ -7,6 +7,7 @@ class Player {
         window.setInterval(this.pushPosition, 200);
         this.element.addEventListener('collide', function (e) {
             checkLava(e);
+            checkFirstCheckPoint(e);
         })
     }
 
@@ -25,3 +26,13 @@ function checkLava(e) {
         EndGame();
     }
 }
+
+function checkFirstCheckPoint(e) {
+    if (e.detail.body.el.getAttribute('id') === "end-stage-one") {
+        removeFirstStage()
+        // generateSecondStage()
+    }
+}
+
+
+

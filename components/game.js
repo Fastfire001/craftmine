@@ -16,6 +16,7 @@ class Game {
 
     startGame() {
         creeperInterval = window.setInterval(this.checkDistance, 500);
+        generateFirstStage()
     }
 
     explodeCreeper() {
@@ -79,4 +80,32 @@ if (this.sensor !== undefined) {
 
     this.sensor.onerror = event => console.log(event.error.name + " (Magnetometer): ", event.error.message);
 
+}
+
+function generateFirstStage() {
+    let request = new XMLHttpRequest();
+    request.open('GET', './first-stage.html', true);
+    request.onload = function () {
+        let data = (request.responseText);
+        document.querySelector('#first-stage').innerHTML = data
+    };
+    request.send();
+}
+
+function removeFirstStage() {
+    let firstStage = document.querySelector('#first-stage')
+        let parent = firstStage.parentNode
+        setTimeout(function() {  
+            firstStage.parentNode.removeChild(firstStage)
+        }, 10);
+}
+
+function generateSecondStage() {
+    let request = new XMLHttpRequest();
+    request.open('GET', './second-stage.html', true);
+    request.onload = function () {
+        let data = (request.responseText);
+        document.querySelector('#second-stage').innerHTML = data
+    };
+    request.send();
 }
