@@ -8,6 +8,9 @@ class Player {
         this.element.addEventListener('collide', function (e) {
             checkLava(e);
             checkFirstCheckPoint(e);
+            if (e.detail.body.el.getAttribute('class') === "check-point-stage-2") {
+                console.log("check-point-stage-2")
+            }
         })
     }
 
@@ -27,11 +30,12 @@ function checkLava(e) {
     }
 }
 
-function checkFirstCheckPoint(e) {
+async function checkFirstCheckPoint(e) {
     if (e.detail.body.el.getAttribute('id') === "end-stage-one") {
-        deleteStages().then(() => {
+        deleteStages()
+        setTimeout(function() {
             loadStage("./second-stage.html", "#second-stage")
-        })
+        }, 100)
     }
 }
 

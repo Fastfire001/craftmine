@@ -82,7 +82,7 @@ function loadStage(url, target) {
     request.open('GET', url, true);
     request.onload = function () {
         let data = (request.responseText);
-        console.log(document.querySelector("a-assets"))
+        console.log(document.querySelector(target))
         document.querySelector(target).innerHTML = data
     };
     request.send();
