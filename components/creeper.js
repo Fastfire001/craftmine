@@ -1,6 +1,7 @@
 class Creeper {
     constructor(element) {
         this.element = element;
+        this.exploseCount = 0;
         this.move = this.move.bind(this);
         this.concatPositionAttributes = this.concatPositionAttributes.bind(this);
         this.concatRotationAttributes = this.concatRotationAttributes.bind(this);
@@ -8,9 +9,10 @@ class Creeper {
     }
 
     move(playerPath) {
+        this.element.setAttribute("animation-mixer", "clip: ArmatureAction.001")
         this.element.setAttribute("animation", "to", this.concatPositionAttributes(playerPath))
-      //  this.element.setAttribute("rotation", this.concatRotationAttributes(playerPath));
-        this.element.emit("startAnimation")
+
+        //  this.element.setAttribute("rotation", this.concatRotationAttributes(playerPath));
     }
 
     /*
@@ -30,9 +32,24 @@ class Creeper {
             this.concatpositionAttributes(creeperPath);
             return creeperPath
         }*/
+    resetExplodeCount() {
+        this.exploseCount = 0;
+    }
 
-    explode() {
-        console.log("dead");
+    startExplode(Date) {
+        this.element.setAttribute("animation", "to", this.concatPositionAttributes(this.element.getAttribute("position")))
+        this.element.setAttribute("animation-mixer", "clip: Static Pose")
+        if (this.exploseCount === 0) {
+            this.exploseCount = Date;
+        } else {
+            if (Date - this.exploseCount > 3) {
+                this.exploooooooooooooooooosion()
+            }
+        }
+    }
+
+    exploooooooooooooooooosion() {
+        console.log("boom")
     }
 
     concatPositionAttributes(positions) {
