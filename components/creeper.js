@@ -2,6 +2,8 @@ class Creeper {
     constructor(element) {
         this.element = element;
         this.exploseCount = 0;
+        this.shh = new Audio('./assets/sounds/shhh.mp3');
+        this.ouh = './assets/sounds/ouh.mp3';
         this.move = this.move.bind(this);
         this.concatPositionAttributes = this.concatPositionAttributes.bind(this);
         this.concatRotationAttributes = this.concatRotationAttributes.bind(this);
@@ -36,25 +38,26 @@ class Creeper {
         this.exploseCount = 0;
     }
 
-    startExplode(Date) {
+    startExplode(Date, creeperInterval) {
         this.element.setAttribute("animation", "to", this.concatPositionAttributes(this.element.getAttribute("position")))
         this.element.setAttribute("animation-mixer", "clip: Static Pose")
         if (this.exploseCount === 0) {
             this.exploseCount = Date;
+            this.shh.play();
         } else {
             if (Date - this.exploseCount > 3) {
-                this.exploooooooooooooooooosion()
+                this.exploooooooooooooooooosion();
+                clearInterval(creeperInterval);
             }
         }
     }
 
     exploooooooooooooooooosion() {
-        console.log("boom")
+        EndGame(this.ouh);
     }
 
     concatPositionAttributes(positions) {
         return positions.x + " " + positions.y + " " + positions.z;
-
     }
 
     concatRotationAttributes(positions) {

@@ -11,7 +11,7 @@
         <script src="https://unpkg.com/aframe-fps-counter-component/dist/aframe-fps-counter-component.min.js"></script>
     </head>
     <body>
-        <a-scene style="z-index: 0" light="defaultLightsEnabled: false" physics="debug: true; gravity: -100;">
+        <a-scene id="scene" style="z-index: 0" light="defaultLightsEnabled: false" physics="debug: true; gravity: -100">
             <a-entity hand-controls>
                 <a-entity fps-counter></a-entity>
             </a-entity>
@@ -27,13 +27,16 @@
             </a-assets>
 
             <!--Camera -->
-
-            <a-entity id="cameraWrapper" dynamic-body="mass:100" position="0 1 0" width="2" height="2" depth="2" listener>
-                <a-camera jump-ability universal-controls kinematic-body="radius:0.4" id="player" 
-                    physics-body="boundingBox: 0.1 0.1 0.1; mass: 1; velocity: 0.2 0 0" position="0 1 0"
-                        wasd-controls="acceleration: 600">
+            <a-entity id="cameraWrapper" geometry="box" dynamic-body="mass:100" position="0 1 0" width="2"
+            height="2"
+            depth="2"
+            listener>
+                <a-camera jump-ability universal-controls kinematic-body="radius:0.4"
+                            id="player"
+                            physics-body="boundingBox: 0.1 0.1 0.1; mass: 1; velocity: 0.2 0 0"
+                            position="0 1 0"
+                            wasd-controls="acceleration: 600">
                     <a-entity id="overlay" radius="2" material="opacity:0.4; color: black; side: back"></a-entity>
-                    <a-sound src="src: url(./assets/sounds/minecraftbgmusic.mp3)" autoplay="true" position="1 1 1"></a-sound>
                     <a-light type="point" intensity="1.5" decay="1" distance="7" color="#FFC"></a-light>
                 </a-camera>
             </a-entity>
@@ -94,7 +97,7 @@
                 <a-box static-body material="src: #stone" width="5" height="5" depth="4" repeat="5 5" position="-2 -4 -7.5"></a-box>
                 <a-box static-body material="src: #stone" width="4" height="4" depth="3" repeat="4 4" position="2.5 0.5 -8"></a-box>
                 <a-box static-body material="src: #cobblestone" width="8" height="1" repeat="4 1" position="-2 -2 -13.5" rotation="0 90 0"></a-box>
-                <a-box material="src: #lava" width="10" height="1" depth="10" repeat="10 10" position="-2 -2.3 -12.5"></a-box>
+                <a-box static-body id="lavaBlock" material="src: #lava" width="10" height="1" depth="10" repeat="10 10" position="-2 -2.3 -12.5"></a-box>
                 <a-light type="point" intensity="1" decay="1" distance="15" color="#FFC" position="0 -1 -11"></a-light>
                 <a-light type="point" intensity="1" decay="1" distance="15" color="#FFC" position="0 -1 -14"></a-light>
                 <a-light type="point" intensity="1" decay="1" distance="15" color="#FFC" position="-4 -1 -11"></a-light>
@@ -115,6 +118,7 @@
             <a-box static-body material="src: #stone" width="1" height="10" repeat="1 10" position="-2 -6.5 -20"></a-box>
             <a-box static-body material="src: #stone" width="1" height="10" repeat="1 10" position="-2 -7.5 -18"></a-box>
             <a-light id="end-stage-one" type="point" intensity="0" decay="1" distance="15" color="#FFC" position="-2 -6 -19"></a-light>
+
         </a-scene>
     </body>
 </html>
