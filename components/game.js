@@ -1,8 +1,11 @@
 let game = "";
+let image = "";
 window.onload = function () {
     game = new Game(document.querySelector("#creeper"), document.querySelector("#player"));
     let lava = document.querySelector("#lavaBlock");
     game.startGame();
+    image = document.querySelector("#dead");
+    image.addEventListener('click', game.resetWorld);
 };
 let creeperInterval = "";
 
@@ -44,16 +47,21 @@ class Game {
         this.creeper.resetExplodeCount();
         this.creeper.move(this.player.playerPositionT)
     }
+
+    resetWorld() {
+        removeOverlay();
+        teleportToHome();
+        teleportCreeperToHome();
+        game.startGame()
+    }
 }
 
 function EndGame(path = './assets/sounds/ouh(classique).mp3') {
     let ouh = new Audio(path);
     ouh.play();
-    let player = document.querySelector("#player");
-    player.setAttribute("animation", 'property: rotation; to:' + "0 0 -15;dur: 100");
-    let image = document.querySelector("#dead")
-    image.style.display = "block";
-    removeAllEvent()
+    game.player.element.setAttribute("animation", 'property: rotation; to:' + "0 0 -15;dur: 100");
+    addOverlay();
+    this.removeAllEvent()
 }
 
 function removeAllEvent() {
@@ -82,12 +90,30 @@ function loadStage(url, target) {
     request.open('GET', url, true);
     request.onload = function () {
         let data = (request.responseText);
-        console.log(document.querySelector(target))
         document.querySelector(target).innerHTML = data
     };
     request.send();
 }
 
-function resetWorld() {
-    generateFirstStage();
+function removeOverlay() {
+    image.style.display = "none";
+}
+
+function addOverlay() {
+    image.style.display = "block";
+}
+
+function teleportToHome() {
+    let player = document.querySelector("#player");
+    player.setAttribute("animation", 'property: rotation; to:' + "0 0 0;dur: 1");
+    player.setAttribute("position", '0 0 0');
+    document.querySelector("#wrapper").addEventListener('mousedown', movePlayer);
+    document.querySelector("#wrapper").addEventListener('mouseup', stopPlayer);
+}
+
+function teleportCreeperToHome() {
+    game.creeper.resetExplodeCount()
+    game.creeper.element.setAttribute("animation", 'property: rotation; to:' + "0 180 0");
+    game.creeper.element.setAttribute("position", '0 0 -1')
+    game.creeper.element.setAttribute("animation", 'property: position; to:' + '0 3 -5;;dur: 2000')
 }

@@ -11,29 +11,9 @@ class Creeper {
     }
 
     move(playerPath) {
-        this.element.setAttribute("animation-mixer", "clip: ArmatureAction.001")
+        this.element.setAttribute("animation-mixer", "clip: ArmatureAction.001");
         this.element.setAttribute("animation", "to", this.concatPositionAttributes(playerPath))
-
-        //  this.element.setAttribute("rotation", this.concatRotationAttributes(playerPath));
     }
-
-    /*
-        getNextCreeperPosition(playerPath) {
-            let creeperPath = this.element.getAttribute("position");
-            if (playerPath.x > creeperPath.x && playerPath.x - creeperPath.x > 1) {
-                creeperPath.x += 1
-            } else if (playerPath.x - creeperPath.x < -1) {
-                creeperPath.x -= 1
-            }
-            console.log(playerPath.x - creeperPath.x)
-            if (playerPath.z > creeperPath.z && playerPath.z - creeperPath.z > 1) {
-                creeperPath.z += 1
-            } else if (playerPath.z < creeperPath.z && playerPath.z - creeperPath.z < -1) {
-                creeperPath.z -= 1
-            }
-            this.concatpositionAttributes(creeperPath);
-            return creeperPath
-        }*/
     resetExplodeCount() {
         this.exploseCount = 0;
     }

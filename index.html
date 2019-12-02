@@ -65,11 +65,11 @@
                 <a-box static-body material="src: #stone" width="5" height="5" depth="5" repeat="5 5" position="-5 3 0" rotation="90 0 90"></a-box>
                 <a-box static-body material="src: #stone" width="5" depth="5" repeat="5 5" position="0 6 0"></a-box>
                 <a-box static-body material="src: #stone" width="5" depth="5" repeat="5 5" position="0 3 3" rotation="90 0 0"></a-box>
-    
+
                 <a-entity id="first-stage">
-                    
+
                 </a-entity>
-    
+
                 <!-- drop -->
                 <a-box static-body material="src: #stone" width="10" height="10" repeat="4 4" position="3.5 -6.5 -19"></a-box>
                 <a-box static-body material="src: #stone" width="10" height="10" repeat="4 4" position="-7.5 -6.5 -19"></a-box>
@@ -80,17 +80,17 @@
                 <a-box static-body material="src: #stone" width="1" height="9" repeat="1 10" position="-1 -7 -20"></a-box>
                 <a-box static-body material="src: #stone" width="1" height="9" repeat="1 10" position="-3 -7 -20"></a-box>
                 <a-box id="second-stage-floor" static-body material="src: #stone" width="20" height="20" depth="20" repeat="20 20" position="-3 -26 -27.5"></a-box>
-    
+
                 <a-entity id="second-stage">
-                    
+
                 </a-entity>
-                
+
                 <a-box class="check-point-stage-2" static-body material="src: #gravel" position="-2 -16.5 -40" rotation="90 90 0"></a-box>
                 <a-box class="check-point-stage-2" static-body material="src: #gravel" position="-2 -16.5 -39" rotation="90 90 0"></a-box>
                 <a-box class="check-point-stage-2" static-body material="src: #gravel" position="-2 -16.5 -38" rotation="90 90 0"></a-box>
             </a-scene>
             <div style="position:absolute; top:0px; left:0px; z-index:1000;">
-                <img onclick="resetWorld()" id="dead" src="assets/images/dead.png"
+                <img id="dead" src="assets/images/dead.png"
                      style="margin-top :-15px;display: none;width: 100vw;transform: rotateX(15deg)">
             </div>
         </div>
