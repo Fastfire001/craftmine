@@ -8,7 +8,6 @@ class Player {
     }
 
     pushPosition() {
-        this.playerPosition.push(this.element.getAttribute('position'));
         this.playerPositionT = this.element.getAttribute('position');
     }
 

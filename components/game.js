@@ -18,4 +18,7 @@ class Game {
     moveCreeper() {
         this.creeper.move(this.player.playerPositionT)
     }
+    moveCreeper() {
+        this.creeper.move(this.player.playerPositionT)
+    }
 }
