@@ -94,7 +94,6 @@ function generateFirstStage() {
 
 function removeFirstStage() {
     let firstStage = document.querySelector('#first-stage')
-        let parent = firstStage.parentNode
         setTimeout(function() {  
             firstStage.parentNode.removeChild(firstStage)
         }, 10);

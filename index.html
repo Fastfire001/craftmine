@@ -24,6 +24,10 @@
                 <img id="lava" src="./assets/images/lava.jpg">
                 <img id="cobblestone" src="./assets/images/cobblestone.jpg">
                 <img id="osidian" src="./assets/images/osidian.png">
+                <img id="iron_ore" src="./assets/images/iron_ore.png">
+                <img id="planks" src="./assets/images/planks.png">
+                <img id="gold_ore" src="./assets/images/gold_ore.png">
+                <img id="gravel" src="./assets//images/gravel.png">
             </a-assets>
 
             <!--Camera -->
@@ -59,18 +63,19 @@
                 
             </a-entity>
 
-            <a-entity id="second-stage">
-                <!-- drop -->
-                <a-box static-body material="src: #stone" width="10" height="10" repeat="4 4" position="3.5 -6.5 -19"></a-box>
-                <a-box static-body material="src: #stone" width="10" height="10" repeat="4 4" position="-7.5 -6.5 -19"></a-box>
-                <a-box static-body material="src: #stone" width="1" height="2" repeat="1 2" position="-2 -2.5 -20"></a-box>
-                <a-box static-body material="src: #stone" width="1" height="10" repeat="1 10" position="-2 -7.5 -18"></a-box>
-                <a-box static-body material="src: #stone" id="end-stage-one" width="1" height="11" repeat="1 10" position="-2 -10.5 -19"></a-box>
-                <a-box static-body material="src: #stone" width="1" height="12" repeat="1 10" position="-2 -8 -21"></a-box>
-                <a-box static-body material="src: #stone" width="1" height="12" repeat="1 10" position="-1 -8 -20"></a-box>
-                <a-box static-body material="src: #stone" width="1" height="12" repeat="1 10" position="-3 -8 -20"></a-box>
-                <a-box static-body material="src: #stone" width="20" height="20" depth="20" repeat="20 20" position="-3 -26 -28"></a-box>
+            <!-- drop -->
+            <a-box static-body material="src: #stone" width="10" height="10" repeat="4 4" position="3.5 -6.5 -19"></a-box>
+            <a-box static-body material="src: #stone" width="10" height="10" repeat="4 4" position="-7.5 -6.5 -19"></a-box>
+            <a-box static-body material="src: #stone" width="1" height="2" repeat="1 2" position="-2 -2.5 -20"></a-box>
+            <a-box static-body material="src: #stone" width="1" height="10" repeat="1 10" position="-2 -7.5 -18"></a-box>
+            <a-box static-body material="src: #stone" id="end-stage-one" width="1" height="11" repeat="1 10" position="-2 -10.5 -19"></a-box>
+            <a-box static-body material="src: #stone" width="1" height="12" repeat="1 10" position="-2 -8 -21"></a-box>
+            <a-box static-body material="src: #stone" width="1" height="9" repeat="1 10" position="-1 -7 -20"></a-box>
+            <a-box static-body material="src: #stone" width="1" height="9" repeat="1 10" position="-3 -7 -20"></a-box>
+            <a-box id="second-stage-floor" static-body material="src: #stone" width="20" height="20" depth="20" repeat="20 20" position="-3 -26 -28"></a-box>
 
+            <a-entity id="second-stage">
+                
             </a-entity>
         </a-scene>
     </body>

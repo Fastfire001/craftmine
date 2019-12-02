@@ -30,9 +30,10 @@ function checkLava(e) {
 function checkFirstCheckPoint(e) {
     if (e.detail.body.el.getAttribute('id') === "end-stage-one") {
         removeFirstStage()
-        // generateSecondStage()
+        generateSecondStage()
     }
 }
+
 
 
 
