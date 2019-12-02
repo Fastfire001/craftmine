@@ -11,7 +11,8 @@
         <script src="https://unpkg.com/aframe-fps-counter-component/dist/aframe-fps-counter-component.min.js"></script>
     </head>
     <body>
-        <a-scene click-handler id="scene" style="z-index: 0" light="defaultLightsEnabled: false"
+        <a-scene onmousedown="movePlayer()" onmouseup="stopPlayer()" click-handler id="scene" style="z-index: 0"
+                 light="defaultLightsEnabled: false"
                  physics="debug: true; gravity: -100">
             <a-entity hand-controls>
                 <a-entity fps-counter></a-entity>
@@ -30,7 +31,7 @@
             <!--Camera -->
             <a-entity id="cameraWrapper" geometry="box" dynamic-body="mass:100" position="0 1 0" width="2" height="2"
                       depth="2" listener>
-                <a-camera jump-ability universal-controls kinematic-body="radius:0.4"
+                <a-camera foo jump-ability universal-controls kinematic-body="radius:0.4"
                           id="player"
                           physics-body="boundingBox: 0.1 0.1 0.1; mass: 1; velocity: 0.2 0 0"
                           position="0 1 0"
@@ -45,81 +46,81 @@
             <!-- <a-entity animation="to: 0 0 50; property: position;  dur: 2000; easing: linear" rotation="0 180 0"
                             animation-mixer="clip: ArmatureAction.001" dur="300" easing="linear"
                             kinematic-body id="creeper" position="0 0 0" scale="1.2 1.2 1.2"
-                            gltf-model="#creepers"></a-entity> -->
+                            gltf-model="#creepers"></a-entity>
 
-            <a-entity>
-                <!-- starting wall -->
-                <a-box static-body material="src: #stone" width="6" height="6" depth="6" repeat="5 5"
-                       position="-0.5 -2.5 0.5"
-                       rotation="90 0 0"></a-box>
-                <a-box static-body material="src: #stone" width="5" depth="5" repeat="5 5" position="3 3 0"
-                       rotation="90 0 90"></a-box>
-                <a-box static-body material="src: #stone" width="5" height="5" depth="5" repeat="5 5" position="-5 3 0"
-                       rotation="90 0 90"></a-box>
-                <a-box static-body material="src: #stone" width="5" depth="5" repeat="5 5" position="0 6 0"></a-box>
-                <a-box static-body material="src: #stone" width="5" depth="5" repeat="5 5" position="0 3 3"
-                       rotation="90 0 0"></a-box>
+            <a-entity> -->
+            <!-- starting wall -->
+            <a-box static-body material="src: #stone" width="6" height="6" depth="6" repeat="5 5"
+                   position="-0.5 -2.5 0.5"
+                   rotation="90 0 0"></a-box>
+            <a-box static-body material="src: #stone" width="5" depth="5" repeat="5 5" position="3 3 0"
+                   rotation="90 0 90"></a-box>
+            <a-box static-body material="src: #stone" width="5" height="5" depth="5" repeat="5 5" position="-5 3 0"
+                   rotation="90 0 90"></a-box>
+            <a-box static-body material="src: #stone" width="5" depth="5" repeat="5 5" position="0 6 0"></a-box>
+            <a-box static-body material="src: #stone" width="5" depth="5" repeat="5 5" position="0 3 3"
+                   rotation="90 0 0"></a-box>
 
-                <!-- starting glowstone -->
-                <a-box static-body material="src: #glowstone" position="2 5 2"></a-box>
-                <a-light type="point" intensity="0.5" decay="1" distance="15" color="#FFC" position="1 4 1"></a-light>
-                <a-box static-body material="src: #glowstone" position="-2 5 2"></a-box>
-                <a-light type="point" intensity="0.5" decay="1" distance="15" color="#FFC" position="-1 4 1"></a-light>
+            <!-- starting glowstone -->
+            <a-box static-body material="src: #glowstone" position="2 5 2"></a-box>
+            <a-light type="point" intensity="0.5" decay="1" distance="15" color="#FFC" position="1 4 1"></a-light>
+            <a-box static-body material="src: #glowstone" position="-2 5 2"></a-box>
+            <a-light type="point" intensity="0.5" decay="1" distance="15" color="#FFC" position="-1 4 1"></a-light>
 
-                <a-box static-body material="src: #diorite" width="1" height="3" repeat="1 3" position="2 4 -3"></a-box>
-                <a-box static-body material="src: #stone" width="4" repeat="4 1" position="-0.5 5 -2"></a-box>
-                <a-box static-body material="src: #diorite" width="3" repeat="3 1" position="2 5 -1"
-                       rotation="0 90 0"></a-box>
-                <a-box static-body material="src: #diorite" position="1 5 -1"></a-box>
-                <a-box static-body material="src: #stone" position="-2 5 -1"></a-box>
-                <a-box static-body material="src: #diorite" width="1" height="2" repeat="1 2"
-                       position="2 1.5 -2"></a-box>
+            <a-box static-body material="src: #diorite" width="1" height="3" repeat="1 3" position="2 4 -3"></a-box>
+            <a-box static-body material="src: #stone" width="4" repeat="4 1" position="-0.5 5 -2"></a-box>
+            <a-box static-body material="src: #diorite" width="3" repeat="3 1" position="2 5 -1"
+                   rotation="0 90 0"></a-box>
+            <a-box static-body material="src: #diorite" position="1 5 -1"></a-box>
+            <a-box static-body material="src: #stone" position="-2 5 -1"></a-box>
+            <a-box static-body material="src: #diorite" width="1" height="2" repeat="1 2"
+                   position="2 1.5 -2"></a-box>
 
-                <a-box static-body material="src: #stone" width="3" height="3" depth="3" repeat="3 3"
-                       position="-2 -2 -4"></a-box>
-                <a-box static-body material="src: #stone" width="4" height="4" depth="4" repeat="4 4"
-                       position="1.5 -2.5 -4.5"></a-box>
-                <a-box static-body material="src: #stone" width="4" height="4" depth="4" repeat="4 4"
-                       position="3.5 0.5 -4.5"></a-box>
-                <a-box static-body material="src: #stone" width="4" height="4" depth="4" repeat="4 4"
-                       position="-5.5 1.5 -4.5"></a-box>
-                <a-box static-body material="src: #stone" width="5" height="1" repeat="4 1" position="-1 4 -3"></a-box>
-                <a-box static-body material="src: #stone" width="5" height="5" depth="5" repeat="5 5" position="-1 5 -6"
-                       rotation="0 90 0"></a-box>
-                <a-box static-body material="src: #coal_ore" width="2" height="1" repeat="2 1" position="-3 2.5 -3"
-                       rotation="0 0 90"></a-box>
-                <a-box static-body material="src: #coal_ore" width="1" height="1" repeat="1 1"
-                       position="-3 2 -4"></a-box>
-                <a-box static-body material="src: #coal_ore" width="2" height="1" repeat="2 1" position="1 0.5 -6"
-                       rotation="0 90 90"></a-box>
-                <a-box static-body material="src: #coal_ore" position="1 0 -5"></a-box>
+            <a-box static-body material="src: #stone" width="3" height="3" depth="3" repeat="3 3"
+                   position="-2 -2 -4"></a-box>
+            <a-box static-body material="src: #stone" width="4" height="4" depth="4" repeat="4 4"
+                   position="1.5 -2.5 -4.5"></a-box>
+            <a-box static-body material="src: #stone" width="4" height="4" depth="4" repeat="4 4"
+                   position="3.5 0.5 -4.5"></a-box>
+            <a-box static-body material="src: #stone" width="4" height="4" depth="4" repeat="4 4"
+                   position="-5.5 1.5 -4.5"></a-box>
+            <a-box static-body material="src: #stone" width="5" height="1" repeat="4 1" position="-1 4 -3"></a-box>
+            <a-box static-body material="src: #stone" width="5" height="5" depth="5" repeat="5 5" position="-1 5 -6"
+                   rotation="0 90 0"></a-box>
+            <a-box static-body material="src: #coal_ore" width="2" height="1" repeat="2 1" position="-3 2.5 -3"
+                   rotation="0 0 90"></a-box>
+            <a-box static-body material="src: #coal_ore" width="1" height="1" repeat="1 1"
+                   position="-3 2 -4"></a-box>
+            <a-box static-body material="src: #coal_ore" width="2" height="1" repeat="2 1" position="1 0.5 -6"
+                   rotation="0 90 90"></a-box>
+            <a-box static-body material="src: #coal_ore" position="1 0 -5"></a-box>
 
-                <!-- lava stage -->
-                <a-box static-body material="src: #stone" width="5" height="5" depth="4" repeat="5 5"
-                       position="-2 -4 -7.5"></a-box>
-                <a-box static-body material="src: #stone" width="4" height="4" depth="3" repeat="4 4"
-                       position="2.5 0.5 -8"></a-box>
-                <a-box static-body material="src: #cobblestone" width="8" height="1" repeat="4 1" position="-2 -2 -13.5"
-                       rotation="0 90 0"></a-box>
-                <a-box static-body id="lavaBlock" material="src: #lava" width="10" height="1" depth="10" repeat="10 10"
-                       position="-2 -2.3 -12.5"></a-box>
-                <a-light type="point" intensity="1" decay="1" distance="15" color="#FFC" position="0 -1 -11"></a-light>
-                <a-light type="point" intensity="1" decay="1" distance="15" color="#FFC" position="0 -1 -14"></a-light>
-                <a-light type="point" intensity="1" decay="1" distance="15" color="#FFC" position="-4 -1 -11"></a-light>
-                <a-light type="point" intensity="1" decay="1" distance="15" color="#FFC" position="-4 -1 -14"></a-light>
+            <!-- lava stage -->
+            <a-box static-body material="src: #stone" width="5" height="5" depth="4" repeat="5 5"
+                   position="-2 -4 -7.5"></a-box>
+            <a-box static-body material="src: #stone" width="4" height="4" depth="3" repeat="4 4"
+                   position="2.5 0.5 -8"></a-box>
+            <a-box static-body material="src: #cobblestone" width="8" height="1" repeat="4 1" position="-2 -2 -13.5"
+                   rotation="0 90 0"></a-box>
+            <a-box static-body id="lavaBlock" material="src: #lava" width="10" height="1" depth="10" repeat="10 10"
+                   position="-2 -2.3 -12.5"></a-box>
+            <a-light type="point" intensity="1" decay="1" distance="15" color="#FFC" position="0 -1 -11"></a-light>
+            <a-light type="point" intensity="1" decay="1" distance="15" color="#FFC" position="0 -1 -14"></a-light>
+            <a-light type="point" intensity="1" decay="1" distance="15" color="#FFC" position="-4 -1 -11"></a-light>
+            <a-light type="point" intensity="1" decay="1" distance="15" color="#FFC" position="-4 -1 -14"></a-light>
 
-                <a-box static-body material="src: #stone" width="15" height="10" repeat="15 10" position="-6 0 -12.5"
-                       rotation="0 90 0"></a-box>
-                <a-box static-body material="src: #coal_ore" width="2" height="2" depth="2" repeat="2 2"
-                       position="-5.5 -1.5 -6.5"></a-box>
-                <a-box static-body material="src: #stone" width="15" height="10" repeat="15 10" position="2 0 -14"
-                       rotation="0 90 0"></a-box>
-                <a-box static-body material="src: #stone" width="10" height="15" repeat="10 15" position="-2 4 -12"
-                       rotation="90 0 0"></a-box>
-                <a-box static-body material="src: #osidian" width="10" height="1" repeat="10 1"
-                       position="-2 -2 -18"></a-box>
-                <a-box static-body material="src: #stone" width="10" height="10" repeat="10 10"
-                       position="-2 2 -20"></a-box>
+            <a-box static-body material="src: #stone" width="15" height="10" repeat="15 10" position="-6 0 -12.5"
+                   rotation="0 90 0"></a-box>
+            <a-box static-body material="src: #coal_ore" width="2" height="2" depth="2" repeat="2 2"
+                   position="-5.5 -1.5 -6.5"></a-box>
+            <a-box static-body material="src: #stone" width="15" height="10" repeat="15 10" position="2 0 -14"
+                   rotation="0 90 0"></a-box>
+            <a-box static-body material="src: #stone" width="10" height="15" repeat="10 15" position="-2 4 -12"
+                   rotation="90 0 0"></a-box>
+            <a-box static-body material="src: #osidian" width="10" height="1" repeat="10 1"
+                   position="-2 -2 -18"></a-box>
+            <a-box static-body material="src: #stone" width="10" height="10" repeat="10 10"
+                   position="-2 2 -20"></a-box>
             </a-entity>
 
             <!-- drop -->
@@ -138,15 +139,45 @@
         </a-scene>
     </body>
     <script>
-        AFRAME.registerComponent("click-handler", {
+        function cos(v) {
+            return Math.cos((v - 180) * (Math.PI / 180.0));
+        }
+
+        function sin(v) {
+            return Math.sin((v - 180) * (Math.PI / 180.0));
+        }
+
+
+        function tan(v) {
+            return Math.tan((v - 180) * (Math.PI / 180.0));
+        }
+
+        let moving = false;
+
+        function movePlayer() {
+            moving = true;
+        }
+
+        function stopPlayer() {
+            moving = false;
+        }
+
+        AFRAME.registerComponent("foo", {
             init: function () {
-                const sceneEl = this.el.sceneEl
-                const canvasEl = sceneEl.canvas
-                canvasEl.addEventListener('touchstart', () => {
-                    console.log("yo")
-                    // code here
-                })
+            },
+            tick() {
+                if (moving == true) {
+                    const step = 0.03
+                    const player = document.querySelector("a-camera")
+                    let r = player.getAttribute('rotation');
+                    var pos = player.getAttribute("position")
+                    pos.x += step * sin(r.y);
+                    pos.y += step * tan(r.x);
+                    pos.z += step * cos(r.y);
+                    player.setAttribute("position", pos);
+                }
             }
-        });
+        })
     </script>
+
 </html>

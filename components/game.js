@@ -61,7 +61,7 @@ try {
     if (this.sensor !== undefined) {
         this.sensor.start();
     }
-    console.log("yo,",this.sensor)
+    console.log("yo,", this.sensor)
 } catch (err) {
     console.log("Magnetometer not supported. Make sure you configure chrome://flags/#enable-generic-sensor-extra-classes and deliver via HTTPS.");
 }
