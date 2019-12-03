@@ -12,7 +12,7 @@
     </head>
     <body id="wrapper">
         <div style="position:relative;">
-            <a-scene click-handler id="scene"
+            <a-scene cursor-listener id="scene"
                      light="defaultLightsEnabled: false"
                      physics="debug: true; gravity: -100">
                 <a-assets>
@@ -35,11 +35,12 @@
                 </a-assets>
 
                 <!--Camera -->
-                <a-entity id="cameraWrapper" geometry="box" dynamic-body="mass:100" position="0 1 0" width="2"
+                <a-entity camera-container id="cameraWrapper" geometry="box" dynamic-body="mass:100" position="0 1 0"
+                          width="2"
                           height="2"
                           depth="2" listener>
                     <a-camera animation="property: rotation; to: 0 0 0" wasd-controls-enabled="false"
-                              foo jump-ability
+                              jump-ability
                               kinematic-body="radius:0.4"
                               id="player"
                               physics-body="boundingBox: 0.1 0.1 0.1; mass: 1; velocity: 0.2 0 0"
@@ -47,64 +48,65 @@
                     >
                         <a-entity id="overlay" radius="2" material="opacity:0.4; color: black; side: back"></a-entity>
                         <a-light type="point" intensity="1.5" decay="1" distance="7" color="#FFC"></a-light>
-<!--                        <a-sound src="src: url(./assets/sounds/minecraftbgmusic.mp3)" autoplay="true"-->
+                        <!--                        <a-sound src="src: url(./assets/sounds/minecraftbgmusic.mp3)" autoplay="true"-->
                         <!--                                 position="0 0 0"></a-sound>-->
                         <a-cursor></a-cursor>
                     </a-camera>
                 </a-entity>
+
 
                 <!--Creeper entity -->
 
                 <a-entity animation="to: 0 0 50; property: position;  dur: 2000; easing: linear" rotation="0 180 0"
                           animation-mixer="clip: ArmatureAction.001" dur="300" easing="linear"
                           kinematic-body id="creeper" position="0 0 0" scale="1.2 1.2 1.2"
-                          gltf-model="#creepers"></a-entity>
-                <a-entity>
+                          gltf-model="#creepers">
 
-                    <a-box static-body material="src: #stone" width="6" height="6" depth="6" repeat="5 5"
-                           position="-0.5 -2.5 0.5" rotation="90 0 0"></a-box>
-                    <a-box static-body material="src: #stone" width="5" depth="5" repeat="5 5" position="3 3 0"
-                           rotation="90 0 90"></a-box>
-                    <a-box static-body material="src: #stone" width="5" height="5" depth="5" repeat="5 5"
-                           position="-5 3 0" rotation="90 0 90"></a-box>
-                    <a-box static-body material="src: #stone" width="5" depth="5" repeat="5 5" position="0 6 0"></a-box>
-                    <a-box static-body material="src: #stone" width="5" depth="5" repeat="5 5" position="0 3 3"
-                           rotation="90 0 0"></a-box>
+                </a-entity>
+                <a-box static-body material="src: #stone" width="6" height="6" depth="6" repeat="5 5"
+                       position="-0.5 -2.5 0.5" rotation="90 0 0"></a-box>
+                <a-box static-body material="src: #stone" width="5" depth="5" repeat="5 5" position="3 3 0"
+                       rotation="90 0 90"></a-box>
+                <a-box static-body material="src: #stone" width="5" height="5" depth="5" repeat="5 5"
+                       position="-5 3 0" rotation="90 0 90"></a-box>
+                <a-box static-body material="src: #stone" width="5" depth="5" repeat="5 5" position="0 6 0"></a-box>
+                <a-box static-body material="src: #stone" width="5" depth="5" repeat="5 5" position="0 3 3"
+                       rotation="90 0 0"></a-box>
 
-                    <a-entity id="first-stage">
+                <a-entity id="first-stage">
 
-                    </a-entity>
+                </a-entity>
 
-                    <!-- drop -->
-                    <a-box static-body material="src: #stone" width="10" height="10" repeat="4 4"
-                           position="3.5 -6.5 -19"></a-box>
-                    <a-box static-body material="src: #stone" width="10" height="10" repeat="4 4"
-                           position="-7.5 -6.5 -19"></a-box>
-                    <a-box static-body material="src: #stone" width="1" height="2" repeat="1 2"
-                           position="-2 -2.5 -20"></a-box>
-                    <a-box static-body material="src: #stone" width="1" height="10" repeat="1 10"
-                           position="-2 -7.5 -18"></a-box>
-                    <a-box static-body material="src: #stone" id="end-stage-one" width="1" height="11" repeat="1 10"
-                           position="-2 -10.5 -19"></a-box>
-                    <a-box static-body material="src: #stone" width="3" height="12" depth="2" repeat="3 10"
-                           position="-2 -8 -21.5"></a-box>
-                    <a-box static-body material="src: #stone" width="1" height="9" repeat="1 10"
-                           position="-1 -7 -20"></a-box>
-                    <a-box static-body material="src: #stone" width="1" height="9" repeat="1 10"
-                           position="-3 -7 -20"></a-box>
-                    <a-box id="second-stage-floor" static-body material="src: #stone" width="20" height="20" depth="20"
-                           repeat="20 20" position="-3 -26 -27.5"></a-box>
+                <!-- drop -->
+                <a-box static-body material="src: #stone" width="10" height="10" repeat="4 4"
+                       position="3.5 -6.5 -19"></a-box>
+                <a-box static-body material="src: #stone" width="10" height="10" repeat="4 4"
+                       position="-7.5 -6.5 -19"></a-box>
+                <a-box static-body material="src: #stone" width="1" height="2" repeat="1 2"
+                       position="-2 -2.5 -20"></a-box>
+                <a-box static-body material="src: #stone" width="1" height="10" repeat="1 10"
+                       position="-2 -7.5 -18"></a-box>
+                <a-box static-body material="src: #stone" id="end-stage-one" width="1" height="11" repeat="1 10"
+                       position="-2 -10.5 -19"></a-box>
+                <a-box static-body material="src: #stone" width="3" height="12" depth="2" repeat="3 10"
+                       position="-2 -8 -21.5"></a-box>
+                <a-box static-body material="src: #stone" width="1" height="9" repeat="1 10"
+                       position="-1 -7 -20"></a-box>
+                <a-box static-body material="src: #stone" width="1" height="9" repeat="1 10"
+                       position="-3 -7 -20"></a-box>
+                <a-box id="second-stage-floor" static-body material="src: #stone" width="20" height="20" depth="20"
+                       repeat="20 20" position="-3 -26 -27.5"></a-box>
 
-                    <a-entity id="second-stage">
+                <a-entity id="second-stage">
 
-                    </a-entity>
+                </a-entity>
 
-                    <a-box class="check-point-stage-2" static-body material="src: #gravel" position="-2 -16.5 -40"
-                           rotation="90 90 0"></a-box>
-                    <a-box class="check-point-stage-2" static-body material="src: #gravel" position="-2 -16.5 -39"
-                           rotation="90 90 0"></a-box>
-                    <a-box class="check-point-stage-2" static-body material="src: #gravel" position="-2 -16.5 -38"
-                           rotation="90 90 0"></a-box>
+                <a-box class="check-point-stage-2" static-body material="src: #gravel" position="-2 -16.5 -40"
+                       rotation="90 90 0"></a-box>
+                <a-box class="check-point-stage-2" static-body material="src: #gravel" position="-2 -16.5 -39"
+                       rotation="90 90 0"></a-box>
+                <a-box class="check-point-stage-2" static-body material="src: #gravel" position="-2 -16.5 -38"
+                       rotation="90 90 0"></a-box>
             </a-scene>
             <div style="position:absolute; top:0px; left:0px; z-index:1000;">
                 <img id="dead" src="assets/images/dead.png"
@@ -129,34 +131,37 @@
 
         let moving = false;
         let debug = false;
+        let pos = document.querySelector("#player").getAttribute("position");
+        let r = document.querySelector("#player").getAttribute("rotation");
 
         function movePlayer() {
             moving = true;
         }
 
-        document.querySelector("#wrapper").addEventListener('mousedown', movePlayer);
-        document.querySelector("#wrapper").addEventListener('mouseup', stopPlayer);
+        document.querySelector("#wrapper").addEventListener("mousedown", movePlayer);
+        document.querySelector("#wrapper").addEventListener("mouseup", stopPlayer);
+
+        document.querySelector('a-scene').addEventListener('enter-vr', function () {
+            movePlayer()
+        });
 
         function stopPlayer() {
             moving = false;
         }
 
-        AFRAME.registerComponent("foo", {
-            init: function () {
+        AFRAME.registerComponent("camera-container", {
+            init: function (evt) {
             },
+
             tick() {
                 if (moving === true) {
-                    const step = 0.05
-                    const player = document.querySelector("a-camera")
-                    let r = player.getAttribute('rotation');
-                    var pos = player.getAttribute("position");
-                    pos.x += step * sin(r.y);
-                    pos.y += step * tan(r.x);
-                    pos.z += step * cos(r.y);
-                    player.setAttribute("position", pos);
+                    const step = 0.05;
+                    r = document.querySelector("#player").getAttribute("rotation");
+                    this.el.object3D.position.x += step * sin(r.y);
+                    this.el.object3D.position.y += step * tan(r.x);
+                    this.el.object3D.position.z += step * cos(r.y);
                 }
             }
         })
     </script>
-
 </html>
