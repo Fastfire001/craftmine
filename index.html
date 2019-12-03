@@ -9,6 +9,7 @@
         <script src="//cdn.rawgit.com/donmccurdy/aframe-physics-system/v4.0.1/dist/aframe-physics-system.min.js"></script>
         <script src="https://unpkg.com/aframe-physics-system@1.4.0/dist/aframe-physics-system.min.js"></script>
         <script src="https://unpkg.com/aframe-fps-counter-component/dist/aframe-fps-counter-component.min.js"></script>
+        <script src="node_modules/aframe-extras.ocean/dist/aframe-extras.ocean.min.js"></script>
     </head>
     <body id="wrapper">
         <div style="position:relative;">
@@ -18,6 +19,7 @@
                 <a-assets>
                     <a-asset-item id="creepers" src="./assets/images/creepers/scene.gltf"
                                   animation-mixer></a-asset-item>
+                    <a-asset-item id="ship_model" src="./assets/images/ship/scene.gltf"></a-asset-item>
                     <img id="stone" src="./assets/images/stone.png">
                     <img id="glowstone" src="./assets/images/glowstone.jpg">
                     <img id="diorite" src="./assets/images/diorite.png">
@@ -32,6 +34,9 @@
                     <img id="craftingtable" src="./assets/images/craftingtable.png">
                     <img id="rail" src="./assets/images/rail.png">
                     <img id="diamond" src="./assets/images/diamond.png">
+                    <img id="grass" src="./assets/images/grass.png">
+                    <img id="log" src="./assets/images/log.png">
+                    <img id="leaves" src="./assets/images/leaves.png">
                 </a-assets>
 
                 <!--Camera -->
@@ -55,56 +60,56 @@
 
                 <!--Creeper entity -->
 
-                <a-entity animation="to: 0 0 50; property: position;  dur: 2000; easing: linear" rotation="0 180 0"
+                <!-- <a-entity animation="to: 0 0 50; property: position;  dur: 2000; easing: linear" rotation="0 180 0"
                           animation-mixer="clip: ArmatureAction.001" dur="300" easing="linear"
                           kinematic-body id="creeper" position="0 0 0" scale="1.2 1.2 1.2"
                           gltf-model="#creepers"></a-entity>
-                <a-entity>
+                <a-entity> -->
 
-                    <a-box static-body material="src: #stone" width="6" height="6" depth="6" repeat="5 5"
-                           position="-0.5 -2.5 0.5" rotation="90 0 0"></a-box>
-                    <a-box static-body material="src: #stone" width="5" depth="5" repeat="5 5" position="3 3 0"
-                           rotation="90 0 90"></a-box>
-                    <a-box static-body material="src: #stone" width="5" height="5" depth="5" repeat="5 5"
-                           position="-5 3 0" rotation="90 0 90"></a-box>
-                    <a-box static-body material="src: #stone" width="5" depth="5" repeat="5 5" position="0 6 0"></a-box>
-                    <a-box static-body material="src: #stone" width="5" depth="5" repeat="5 5" position="0 3 3"
-                           rotation="90 0 0"></a-box>
+                <a-box static-body material="src: #stone" width="6" height="6" depth="6" repeat="5 5"
+                        position="-0.5 -2.5 0.5" rotation="90 0 0"></a-box>
+                <a-box static-body material="src: #stone" width="5" depth="5" repeat="5 5" position="3 3 0"
+                        rotation="90 0 90"></a-box>
+                <a-box static-body material="src: #stone" width="5" height="5" depth="5" repeat="5 5"
+                        position="-5 3 0" rotation="90 0 90"></a-box>
+                <a-box static-body material="src: #stone" width="5" depth="5" repeat="5 5" position="0 6 0"></a-box>
+                <a-box static-body material="src: #stone" width="5" depth="5" repeat="5 5" position="0 3 3"
+                        rotation="90 0 0"></a-box>
 
-                    <a-entity id="first-stage">
+                <a-entity id="first-stage">
 
-                    </a-entity>
+                </a-entity>
 
-                    <!-- drop -->
-                    <a-box static-body material="src: #stone" width="10" height="10" repeat="4 4"
-                           position="3.5 -6.5 -19"></a-box>
-                    <a-box static-body material="src: #stone" width="10" height="10" repeat="4 4"
-                           position="-7.5 -6.5 -19"></a-box>
-                    <a-box static-body material="src: #stone" width="1" height="2" repeat="1 2"
-                           position="-2 -2.5 -20"></a-box>
-                    <a-box static-body material="src: #stone" width="1" height="10" repeat="1 10"
-                           position="-2 -7.5 -18"></a-box>
-                    <a-box static-body material="src: #stone" id="end-stage-one" width="1" height="11" repeat="1 10"
-                           position="-2 -10.5 -19"></a-box>
-                    <a-box static-body material="src: #stone" width="3" height="12" depth="2" repeat="3 10"
-                           position="-2 -8 -21.5"></a-box>
-                    <a-box static-body material="src: #stone" width="1" height="9" repeat="1 10"
-                           position="-1 -7 -20"></a-box>
-                    <a-box static-body material="src: #stone" width="1" height="9" repeat="1 10"
-                           position="-3 -7 -20"></a-box>
-                    <a-box id="second-stage-floor" static-body material="src: #stone" width="20" height="20" depth="20"
-                           repeat="20 20" position="-3 -26 -27.5"></a-box>
+                <!-- drop -->
+                <a-box static-body material="src: #stone" width="10" height="10" repeat="4 4"
+                        position="3.5 -6.5 -19"></a-box>
+                <a-box static-body material="src: #stone" width="10" height="10" repeat="4 4"
+                        position="-7.5 -6.5 -19"></a-box>
+                <a-box static-body material="src: #stone" width="1" height="2" repeat="1 2"
+                        position="-2 -2.5 -20"></a-box>
+                <a-box static-body material="src: #stone" width="1" height="10" repeat="1 10"
+                        position="-2 -7.5 -18"></a-box>
+                <a-box static-body material="src: #stone" id="end-stage-one" width="1" height="11" repeat="1 10"
+                        position="-2 -10.5 -19"></a-box>
+                <a-box static-body material="src: #stone" width="3" height="12" depth="2" repeat="3 10"
+                        position="-2 -8 -21.5"></a-box>
+                <a-box static-body material="src: #stone" width="1" height="9" repeat="1 10"
+                        position="-1 -7 -20"></a-box>
+                <a-box static-body material="src: #stone" width="1" height="9" repeat="1 10"
+                        position="-3 -7 -20"></a-box>
+                <a-box id="second-stage-floor" static-body material="src: #stone" width="20" height="20" depth="20"
+                        repeat="20 20" position="-3 -26 -27.5"></a-box>
 
-                    <a-entity id="second-stage">
+                <a-entity id="second-stage">
 
-                    </a-entity>
+                </a-entity>
+                
+                <a-entity id="third-stage">
+       
+                </a-entity>
 
-                    <a-box class="check-point-stage-2" static-body material="src: #gravel" position="-2 -16.5 -40"
-                           rotation="90 90 0"></a-box>
-                    <a-box class="check-point-stage-2" static-body material="src: #gravel" position="-2 -16.5 -39"
-                           rotation="90 90 0"></a-box>
-                    <a-box class="check-point-stage-2" static-body material="src: #gravel" position="-2 -16.5 -38"
-                           rotation="90 90 0"></a-box>
+                <a-sky color="#12e3e3"></a-sky>
+                    
             </a-scene>
             <div style="position:absolute; top:0px; left:0px; z-index:1000;">
                 <img id="dead" src="assets/images/dead.png"

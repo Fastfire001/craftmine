@@ -72,7 +72,7 @@ function removeAllEvent() {
 
 async function deleteStages() {
    return new Promise(function (resolve, reject) {
-        let stages = document.querySelectorAll("#first-stage,#second-stage");
+        let stages = document.querySelectorAll("#first-stage,#second-stage,#third-stage");
         for (let i = 0; i < stages.length; i++) {
             replaceChild(stages[i])
         }
