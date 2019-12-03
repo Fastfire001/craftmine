@@ -32,10 +32,9 @@ function checkLava(e) {
 
 async function checkFirstCheckPoint(e) {
     if (e.detail.body.el.getAttribute('id') === "end-stage-one") {
-        deleteStages()
-        setTimeout(function() {
+        deleteStages().then((data) => {
             loadStage("./second-stage.html", "#second-stage")
-        }, 100)
+        })
     }
 }
 

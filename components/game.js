@@ -71,10 +71,13 @@ function removeAllEvent() {
 }
 
 async function deleteStages() {
-    let stages = document.querySelectorAll("#first-stage,#second-stage");
-    for (let i = 0; i < stages.length; i++) {
-        replaceChild(stages[i])
-    }
+   return new Promise(function (resolve, reject) {
+        let stages = document.querySelectorAll("#first-stage,#second-stage");
+        for (let i = 0; i < stages.length; i++) {
+            replaceChild(stages[i])
+        }
+        resolve('done');
+    });
 }
 
 function replaceChild(e) {
