@@ -49,7 +49,7 @@ async function checkSecondCheckPoint(e) {
                 loadStage("./third-stage.html", "#third-stage")
                 setTimeout(function() {
                     game.player.element.parentNode.object3D.position.x = -3;
-                    game.player.element.parentNode.object3D.position.y = -25;
+                    game.player.element.parentNode.object3D.position.y = -23;
                     game.player.element.parentNode.object3D.position.z = -39;
                 }, 1000)
             }, 100)
