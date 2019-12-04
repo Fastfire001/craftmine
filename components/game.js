@@ -18,7 +18,7 @@ class Game {
     }
 
     startGame() {
-        creeperInterval = window.setInterval(this.checkDistance, 500);
+        //  creeperInterval = window.setInterval(this.checkDistance, 500);
         loadStage("./first-stage.html", "#first-stage")
     }
 
@@ -71,8 +71,13 @@ function removeAllEvent() {
 }
 
 async function deleteStages() {
+<<<<<<< HEAD
    return new Promise(function (resolve, reject) {
         let stages = document.querySelectorAll("#first-stage,#second-stage,#third-stage");
+=======
+    return new Promise(function (resolve, reject) {
+        let stages = document.querySelectorAll("#first-stage,#second-stage");
+>>>>>>> 933ed0cee461ba21c25692e938c22ebae611e1b8
         for (let i = 0; i < stages.length; i++) {
             replaceChild(stages[i])
         }

@@ -14,6 +14,7 @@ class Creeper {
         this.element.setAttribute("animation-mixer", "clip: ArmatureAction.001");
         this.element.setAttribute("animation", "to", this.concatPositionAttributes(playerPath))
     }
+
     resetExplodeCount() {
         this.exploseCount = 0;
     }
