@@ -127,6 +127,9 @@ function teleportToHome() {
     game.player.playerPositionT = 0;
     document.querySelector("#wrapper").addEventListener('mousedown', movePlayer);
     document.querySelector("#wrapper").addEventListener('mouseup', stopPlayer);
+    if (document.querySelector("a-scene").is('vr-mode')) {
+        setTimeout(movePlayer, 5000);
+    }
 }
 
 function teleportCreeperToHome() {
