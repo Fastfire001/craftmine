@@ -9,7 +9,7 @@ window.onload = function () {
         if (game.player.playerPositionT !== 0) {
             game.startGame();
         }
-    }, 500)
+    }, 2000)
 };
 
 class Game {
@@ -128,7 +128,7 @@ function teleportToHome() {
     document.querySelector("#wrapper").addEventListener('mousedown', movePlayer);
     document.querySelector("#wrapper").addEventListener('mouseup', stopPlayer);
     if (document.querySelector("a-scene").is('vr-mode')) {
-        setTimeout(movePlayer, 5000);
+        setTimeout(movePlayer, 3000);
     }
 }
 
