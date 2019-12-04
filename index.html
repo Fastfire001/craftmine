@@ -14,7 +14,7 @@
         <div style="position:relative;">
             <a-scene cursor-listener id="scene"
                      light="defaultLightsEnabled: false"
-                     physics="debug: true; gravity: -100">
+                     physics="debug: true; gravity: -50">
                 <a-assets>
                     <a-asset-item id="creepers" src="./assets/images/creepers/scene.gltf"
                                   animation-mixer></a-asset-item>
@@ -35,13 +35,13 @@
                 </a-assets>
 
                 <!--Camera -->
-                <a-entity camera-container id="cameraWrapper" geometry="box" dynamic-body="mass:100" position="0 1 0"
+                <a-entity kinematic-body="radius:0.4"
+                          camera-container id="cameraWrapper" geometry="box" position="0 1 0"
                           width="2"
                           height="2"
                           depth="2" listener>
                     <a-camera animation="property: rotation; to: 0 0 0" wasd-controls-enabled="false"
                               jump-ability
-                              kinematic-body="radius:0.4"
                               id="player"
                               physics-body="boundingBox: 0.1 0.1 0.1; mass: 1; velocity: 0.2 0 0"
                               position="0 1 0"
@@ -59,9 +59,8 @@
 
                 <a-entity animation="to: 0 0 50; property: position;  dur: 2000; easing: linear" rotation="0 180 0"
                           animation-mixer="clip: ArmatureAction.001" dur="300" easing="linear"
-                          kinematic-body id="creeper" position="0 0 0" scale="1.2 1.2 1.2"
+                          kinematic-body id="creeper" position="0 0 -10" scale="1.2 1.2 1.2"
                           gltf-model="#creepers">
-
                 </a-entity>
                 <a-box static-body material="src: #stone" width="6" height="6" depth="6" repeat="5 5"
                        position="-0.5 -2.5 0.5" rotation="90 0 0"></a-box>
@@ -110,7 +109,7 @@
             </a-scene>
             <div style="position:absolute; top:0px; left:0px; z-index:1000;">
                 <img id="dead" src="assets/images/dead.png"
-                     style="cursor:pointer;margin-top :-15px;display: none;width: 100vw;transform: rotateX(15deg)">
+                     style="cursor:pointer;margin-top :-15px;display: none;width: 100vw;height: 102vh;transform: rotateX(15deg)">
             </div>
         </div>
     </body>
@@ -155,7 +154,7 @@
 
             tick() {
                 if (moving === true) {
-                    const step = 0.05;
+                    const step = 0.07;
                     r = document.querySelector("#player").getAttribute("rotation");
                     this.el.object3D.position.x += step * sin(r.y);
                     this.el.object3D.position.y += step * tan(r.x);
