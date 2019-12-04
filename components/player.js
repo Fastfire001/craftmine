@@ -3,13 +3,14 @@ class Player {
         this.element = element;
         this.playerPosition = [];
         this.playerPositionT = " 0 0 0 ";
-        this.playerAlive = true
+        this.playerAlive = true;
+        this.container = this.element.parentNode;
         this.pushPosition = this.pushPosition.bind(this);
         window.setInterval(this.pushPosition, 200);
-        this.element.parentNode.addEventListener('collide', function (e) {
-            checkLava(e);
-            checkFirstCheckPoint(e);
-            checkSecondCheckPoint(e);
+        this.container.addEventListener('collide', function (e) {
+            checkLava(this.container);
+            checkFirstCheckPoint(this.container);
+            checkSecondCheckPoint(this.container);
         })
     }
 
