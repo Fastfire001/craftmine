@@ -1,9 +1,14 @@
 let game = "";
 let image = "";
+let waitingForMove = ""
 window.onload = function () {
     game = new Game(document.querySelector("#creeper"), document.querySelector("#player"));
     let lava = document.querySelector("#lavaBlock");
-    game.startGame();
+    waitingForMove = setInterval(function () {
+        if (game.player.playerPositionT !== 0) {
+            game.startGame();
+        }
+    }, 500)
     image = document.querySelector("#dead");
     image.addEventListener('click', game.resetWorld);
 };
@@ -18,12 +23,13 @@ class Game {
     }
 
     startGame() {
-        //  creeperInterval = window.setInterval(this.checkDistance, 500);
+        clearInterval(waitingForMove);
+        creeperInterval = window.setInterval(this.checkDistance, 500);
         loadStage("./first-stage.html", "#first-stage")
     }
 
     explodeCreeper() {
-        this.creeper.startExplode(new Date().getTime() / 1000, creeperInterval);
+        this.creeper.startExplode(new Date().getTime() / 1000);
     }
 
     checkDistance() {
@@ -52,15 +58,23 @@ class Game {
         removeOverlay();
         teleportToHome();
         teleportCreeperToHome();
-        game.startGame()
+        game.creeper.exploded = false;
+        game.player.playerAlive = true
+        waitingForMove = setInterval(function () {
+            if (game.player.playerPositionT !== 0) {
+                game.startGame();
+            }
+        }, 500);
     }
 }
 
 function EndGame(path = './assets/sounds/ouh(classique).mp3') {
     let ouh = new Audio(path);
     ouh.play();
+    game.creeper.exploseCount = 0;
     game.player.element.setAttribute("animation", 'property: rotation; to:' + "0 0 -15;dur: 100");
     addOverlay();
+    clearInterval(creeperInterval);
     this.removeAllEvent()
 }
 
@@ -71,7 +85,7 @@ function removeAllEvent() {
 }
 
 async function deleteStages() {
-   return new Promise(function (resolve, reject) {
+    return new Promise(function (resolve, reject) {
         let stages = document.querySelectorAll("#first-stage,#second-stage,#third-stage");
         for (let i = 0; i < stages.length; i++) {
             replaceChild(stages[i])
@@ -107,9 +121,10 @@ function addOverlay() {
 }
 
 function teleportToHome() {
-    let player = document.querySelector("#player");
-    player.setAttribute("animation", 'property: rotation; to:' + "0 0 0;dur: 1");
-    player.setAttribute("position", '0 0 0');
+    game.player.element.setAttribute("animation", 'property: rotation; to:' + "0 0 0;dur: 1");
+    game.player.element.setAttribute("position", '0 1 0');
+    game.player.element.parentNode.setAttribute("position", "0 1 0");
+    game.player.playerPositionT = 0;
     document.querySelector("#wrapper").addEventListener('mousedown', movePlayer);
     document.querySelector("#wrapper").addEventListener('mouseup', stopPlayer);
 }
@@ -117,6 +132,6 @@ function teleportToHome() {
 function teleportCreeperToHome() {
     game.creeper.resetExplodeCount()
     game.creeper.element.setAttribute("animation", 'property: rotation; to:' + "0 180 0");
-    game.creeper.element.setAttribute("position", '0 0 -1')
+    game.creeper.element.setAttribute("position", '0 0 -10')
     game.creeper.element.setAttribute("animation", 'property: position; to:' + '0 3 -5;;dur: 2000')
 }

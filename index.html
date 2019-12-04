@@ -9,8 +9,6 @@
         <script src="//cdn.rawgit.com/donmccurdy/aframe-physics-system/v4.0.1/dist/aframe-physics-system.min.js"></script>
         <script src="https://unpkg.com/aframe-physics-system@1.4.0/dist/aframe-physics-system.min.js"></script>
         <script src="https://unpkg.com/aframe-fps-counter-component/dist/aframe-fps-counter-component.min.js"></script>
-        <script src="https://unpkg.com/aframe-particle-system-component@1.0.x/dist/aframe-particle-system-component.min.js"></script>
-        <script src="node_modules/aframe-extras.ocean/dist/aframe-extras.ocean.min.js"></script>
     </head>
     <body id="wrapper">
         <div style="position:relative;">
@@ -20,7 +18,6 @@
                 <a-assets>
                     <a-asset-item id="creepers" src="./assets/images/creepers/scene.gltf"
                                   animation-mixer></a-asset-item>
-                    <a-asset-item id="ship_model" src="./assets/images/ship/scene.gltf"></a-asset-item>
                     <img id="stone" src="./assets/images/stone.png">
                     <img id="glowstone" src="./assets/images/glowstone.jpg">
                     <img id="diorite" src="./assets/images/diorite.png">
@@ -35,19 +32,16 @@
                     <img id="craftingtable" src="./assets/images/craftingtable.png">
                     <img id="rail" src="./assets/images/rail.png">
                     <img id="diamond" src="./assets/images/diamond.png">
-                    <img id="grass" src="./assets/images/grass.png">
-                    <img id="log" src="./assets/images/log.png">
-                    <img id="leaves" src="./assets/images/leaves.png">
                 </a-assets>
 
                 <!--Camera -->
-                <a-entity camera-container id="cameraWrapper" geometry="box" dynamic-body="mass:100" position="0 1 0"
+                <a-entity kinematic-body="radius:0.4"
+                          camera-container id="cameraWrapper" geometry="box" position="0 1 0"
                           width="2"
                           height="2"
                           depth="2" listener>
                     <a-camera animation="property: rotation; to: 0 0 0" wasd-controls-enabled="false"
                               jump-ability
-                              kinematic-body="radius:0.4"
                               id="player"
                               physics-body="boundingBox: 0.1 0.1 0.1; mass: 1; velocity: 0.2 0 0"
                               position="0 1 0"
@@ -116,7 +110,7 @@
             </a-scene>
             <div style="position:absolute; top:0px; left:0px; z-index:1000;">
                 <img id="dead" src="assets/images/dead.png"
-                     style="cursor:pointer;margin-top :-15px;display: none;width: 100vw;transform: rotateX(15deg)">
+                     style="cursor:pointer;margin-top :-15px;display: none;width: 100vw;height: 102vh;transform: rotateX(15deg)">
             </div>
         </div>
     </body>
@@ -161,7 +155,7 @@
 
             tick() {
                 if (moving === true) {
-                    const step = 0.05;
+                    const step = 0.07;
                     r = document.querySelector("#player").getAttribute("rotation");
                     this.el.object3D.position.x += step * sin(r.y);
                     this.el.object3D.position.y += step * tan(r.x);
