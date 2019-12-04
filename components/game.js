@@ -66,6 +66,12 @@ class Game {
             }
         }, 500);
     }
+
+    removeCreeper() {
+        setTimeout(function() {
+            game.creeper.element.parentNode.removeChild(game.creeper.element)
+        }, 100)
+    }
 }
 
 function EndGame(path = './assets/sounds/ouh(classique).mp3') {

@@ -49,6 +49,7 @@ async function checkSecondCheckPoint(e) {
                 loadStage("./third-stage.html", "#third-stage")
             }, 100)
         })
+        game.removeCreeper()
     }
 }
 
